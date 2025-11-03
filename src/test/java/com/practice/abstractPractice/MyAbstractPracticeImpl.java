@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.abstractPractice;
 
 public class MyAbstractPracticeImpl extends MyAbstractPractice {
 

@@ -1,6 +1,5 @@
 package com.practice;
 
-import com.practice.demoSerializationDeSerialization.User;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class PracticeStreamTest {
         );
 
         List<String> adminNames = users.stream()
-                .filter(user -> "Admin".equals(user.getAge()))
+                .filter(user -> "Admin".equals(user.getRole()))
                 .map(User::getName)
                 //.filter(userName -> userName.startsWith("B"))
                 .distinct()

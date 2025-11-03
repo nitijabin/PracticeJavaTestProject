@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.interfacePractice;
 
 public interface MyInterfacePractice {
 
@@ -11,7 +11,8 @@ public interface MyInterfacePractice {
       in interface all variables are public static final by default
       in interface all methods are public abstract by default
     */
-    int myVar = 10; // public static final int myVar = 10;
+    int myVar = 10;
+    //public static final int myVar = 10;
 
     void myMethod();
     void myAbstractMethod();

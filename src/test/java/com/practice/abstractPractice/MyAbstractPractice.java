@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.abstractPractice;
 
 public abstract class MyAbstractPractice {
     abstract String myAbstractMethod();
