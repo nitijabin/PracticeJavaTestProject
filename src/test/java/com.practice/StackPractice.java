@@ -8,8 +8,10 @@ public class StackPractice {
         stack.push("Apple");
         stack.push("Banana");
         stack.push("guava");
-        System.out.println(stack.peek() + stack.search("Banana"));
+        stack.push("Orange");
+        stack.push("Grape");
+        System.out.println(stack.peek() + "  " + stack.search("Banana"));
         stack.pop();
-        System.out.println(stack.peek() + stack.search("Banana"));
+        System.out.println(stack.peek() + " " + stack.search("Banana"));
     }
 }

@@ -1,19 +1,18 @@
 package com.practice;
 
-import java.util.Arrays;
-
 public class IsIntPalindrome {
-    public static boolean isIntPalindrome(int x) {
+    public static boolean isIntPalindrome(int input) {
 
-        int reverse = 0;
-        int number = x;
-        if (x < 0) {
+        if(input<0){
             return false;
         }
-        if (x == reverse)
-            return true;
-        else
-            return false;
+        int reverse = 0;
+        int original = input;
+        while(input!=0){
+            reverse = reverse*10 + (input%10);
+            input = input/10;
+        }
+        return  reverse==original;
     }
 
     public static boolean isStringPalindrome(String str) {
