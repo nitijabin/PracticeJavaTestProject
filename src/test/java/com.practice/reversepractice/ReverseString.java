@@ -18,8 +18,13 @@ public class ReverseString {
             output = output + n.charAt(i);
         }
 
-
-
+        String input = "Hello World";
+        char [] inputArray = input.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(int i = inputArray.length - 1; i>=0 ; i--){
+            sb.append(inputArray[i]);
+        }
+        System.out.println(sb);
         System.out.println("print reverse: " + output);
     }
 }
