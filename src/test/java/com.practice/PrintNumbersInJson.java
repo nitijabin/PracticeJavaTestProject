@@ -4,6 +4,7 @@ import io.restassured.builder.ResponseBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,18 +30,30 @@ public class PrintNumbersInJson {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         while (matcher.find()) {
-            System.out.println( matcher.group(2));
+            System.out.println(matcher.group(2));
         }
     }
 
     public static void printResponseBuilder(String input) {
         ResponseBuilder responseBuilder =
                 new ResponseBuilder().setBody(input).setStatusCode(200).setContentType(ContentType.JSON);
-
         Response response = responseBuilder.build();
         Map<String, Object> map = response.jsonPath().getMap("");
-        map.values().stream().filter(s -> s instanceof Integer).forEach(System.out::println);
+        map.values().stream()
+                .filter(v -> v instanceof Integer)
+                .forEach(System.out::println);
+    }
 
+    public static void printMap() {
+        Map<String, Integer> scores = new HashMap<>();
+        scores.put("John", 50);
+
+        scores.computeIfPresent("John", (key, value) -> 15);
+        for (Map.Entry<String, Integer> entry : scores.entrySet()) {
+            entry.setValue(entry.getValue() + 10);
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+        //System.out.println(scores);
     }
 
     public static void main(String[] args) {
@@ -55,5 +68,6 @@ public class PrintNumbersInJson {
 
         printResponseBuilder(input);
         print_json(input);
+        printMap();
     }
 }

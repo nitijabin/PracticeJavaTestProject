@@ -21,8 +21,9 @@ public class FindFreqOfSpecChar {
     public static void main(String[] args) {
         String str = "abs# @#a";
         Map<Character, Integer> freqMap = FindFreqOfSpecChar.getFrequencyMap(str);
-        for(Character c : freqMap.keySet()){
+        for (Character c : freqMap.keySet()) {
             System.out.println(c + " : " + freqMap.get(c));
         }
+        System.out.println(freqMap);
     }
 }
