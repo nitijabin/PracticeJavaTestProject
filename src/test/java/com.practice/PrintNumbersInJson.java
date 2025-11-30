@@ -1,5 +1,7 @@
 package com.practice;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.builder.ResponseBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -69,5 +71,17 @@ public class PrintNumbersInJson {
         printResponseBuilder(input);
         print_json(input);
         printMap();
+        print_Json_ObjectMapper(input);
+    }
+
+    public static void print_Json_ObjectMapper(String input){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            Map<String, Object> map = mapper.readValue(input, Map.class);
+            map.values().stream().filter(s-> s instanceof Number).forEach(System.out::println);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

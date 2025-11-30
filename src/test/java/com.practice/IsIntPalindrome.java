@@ -29,6 +29,6 @@ public class IsIntPalindrome {
 
     public static void main(String[] args) {
         System.out.println(isIntPalindrome(-121));
-        System.out.println(isStringPalindrome("0P"));
+        System.out.println(isStringPalindrome("0P0"));
     }
 }

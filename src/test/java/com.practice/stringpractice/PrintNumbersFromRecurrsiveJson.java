@@ -6,9 +6,7 @@ import io.restassured.builder.ResponseBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -37,21 +35,21 @@ public class PrintNumbersFromRecurrsiveJson {
     */
 
     public static void print_numbers_in_json(String json) {
+
         ObjectMapper mapper = new ObjectMapper();
         try {
             Map<String, Object> map = mapper.readValue(json, Map.class);
-            extractValues(map).filter(v -> v instanceof Number).map(Object::toString).forEach(v -> System.out.print(v + " "));
+            extractValues(map).filter(v -> v instanceof Number).map(Object::toString)
+                    .forEach(s -> System.out.print(s + " "));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
 
-    // 🔥 FlatMap-based recursive extractor — no manual recursion needed
-    private static Stream<Object> extractValues(Object obj) {
+    public static Stream<Object> extractValues(Object obj) {
         if (obj instanceof Map<?, ?> map) {
             return map.values().stream().flatMap(PrintNumbersFromRecurrsiveJson::extractValues);
         }
-
         if (obj instanceof List<?> list) {
             return list.stream().flatMap(PrintNumbersFromRecurrsiveJson::extractValues);
         }
@@ -59,7 +57,6 @@ public class PrintNumbersFromRecurrsiveJson {
     }
 
     public static void main(String[] args) {
-
         String input = """
                 {
                   "key1": 10,

@@ -4,7 +4,7 @@ public class PermutationsExample {
     // Function to print all the permutations of str
     static void printPermutn(String str, String ans)
     {
-        System.out.println("Permutation start with: " + str);
+       // System.out.println("Permutation start with: " + str);
         // If string is empty
         if (str.length() == 0) {
             System.out.print(ans + " ");
@@ -15,12 +15,14 @@ public class PermutationsExample {
 
             // ith character of str
             char ch = str.charAt(i);
-
+            System.out.println("ch: " + ch);
             // Rest of the string after excluding
             // the ith character
             String ros = str.substring(0, i) +
                     str.substring(i + 1);
              // Recursive call
+            System.out.println("ros: " + ros);
+            System.out.println("ans: " + ans);
             printPermutn(ros, ans + ch);
         }
     }
