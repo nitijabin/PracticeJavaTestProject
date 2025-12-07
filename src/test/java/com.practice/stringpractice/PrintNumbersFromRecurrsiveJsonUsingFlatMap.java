@@ -2,17 +2,11 @@ package com.practice.stringpractice;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.restassured.builder.ResponseBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class PrintNumbersFromRecurrsiveJson {
+public class PrintNumbersFromRecurrsiveJsonUsingFlatMap {
 
     /*
     Write a function called print_numbers_in_json that takes a JSON string as input and prints all the numeric values found in the JSON string.
@@ -48,10 +42,10 @@ public class PrintNumbersFromRecurrsiveJson {
 
     public static Stream<Object> extractValues(Object obj) {
         if (obj instanceof Map<?, ?> map) {
-            return map.values().stream().flatMap(PrintNumbersFromRecurrsiveJson::extractValues);
+            return map.values().stream().flatMap(PrintNumbersFromRecurrsiveJsonUsingFlatMap::extractValues);
         }
         if (obj instanceof List<?> list) {
-            return list.stream().flatMap(PrintNumbersFromRecurrsiveJson::extractValues);
+            return list.stream().flatMap(PrintNumbersFromRecurrsiveJsonUsingFlatMap::extractValues);
         }
         return Stream.of(obj);
     }

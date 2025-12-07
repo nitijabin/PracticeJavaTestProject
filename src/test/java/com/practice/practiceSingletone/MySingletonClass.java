@@ -4,6 +4,7 @@ public class MySingletonClass {
 
     private static MySingletonClass c;
 
+    //for the Singleton class the constructor should be private
     private MySingletonClass() {
 
     }
